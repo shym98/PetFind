@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         arrayAdapter = new arrayAdapter(this, R.layout.item, rowItems );
 
-        SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
+        final SwipeFlingAdapterView flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
 
         flingContainer.setAdapter(arrayAdapter);
         flingContainer.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
                 cards obj = (cards) dataObject;
                 String userId = obj.getUserId();
                 usersDb.child(userId).child("connections").child("nope").child(currentUId).setValue(true);
-                //Toast.makeText(MainActivity.this, "Left", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -93,8 +92,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onScroll(float scrollProgressPercent) {
+            public void onScroll(float v) {
+
             }
+
         });
 
 
@@ -102,7 +103,15 @@ public class MainActivity extends AppCompatActivity {
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
-                Toast.makeText(MainActivity.this, "Item Clicked", Toast.LENGTH_SHORT).show();
+                int index = rowItems.indexOf((cards) dataObject);
+                cards temp = rowItems.get(index);
+                temp.nextPhoto();
+                temp.setClicked();
+                rowItems.remove(0);
+                rowItems.add(0, temp);
+                flingContainer.removeAllViewsInLayout();
+                arrayAdapter.notifyDataSetChanged();
+
             }
         });
 
@@ -166,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
-                    Toast.makeText(MainActivity.this, "new Connection", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "IT'S A MATCH!!!", Toast.LENGTH_LONG).show();
 
                     String key = FirebaseDatabase.getInstance().getReference().child("Chat").push().getKey();
 
@@ -210,11 +219,44 @@ public class MainActivity extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 if (dataSnapshot.child("sex").getValue() != null && !dataSnapshot.child("sex").getValue().equals("Human")) {
                     if (dataSnapshot.exists() && !dataSnapshot.child("connections").child("nope").hasChild(currentUId) && !dataSnapshot.child("connections").child("yeps").hasChild(currentUId) && checkCompatibility(dataSnapshot)) {
-                        String profileImageUrl = "default";
+                        String[] profileImageUrl = new String[]{};
                         if (!dataSnapshot.child("profileImageUrl").getValue().equals("default")) {
-                            profileImageUrl = dataSnapshot.child("profileImageUrl").getValue().toString();
+                            profileImageUrl = Arrays.copyOf(profileImageUrl, profileImageUrl.length + 1);
+                            profileImageUrl[profileImageUrl.length-1] = dataSnapshot.child("profileImageUrl").getValue().toString();
+                        } else {
+                            profileImageUrl = Arrays.copyOf(profileImageUrl, profileImageUrl.length + 1);
+                            profileImageUrl[profileImageUrl.length-1] = "default";
                         }
-                        cards item = new cards(dataSnapshot.getKey(), dataSnapshot.child("name").getValue().toString(), profileImageUrl);
+                        for (int i = 0; i < 4; i++) {
+                            if (dataSnapshot.child("profileImageUrl" + Integer.toString(i)).getValue() != null &&
+                                    !dataSnapshot.child("profileImageUrl" + Integer.toString(i)).getValue().equals("default")) {
+                                profileImageUrl = Arrays.copyOf(profileImageUrl, profileImageUrl.length + 1);
+                                profileImageUrl[profileImageUrl.length-1] = dataSnapshot.child("profileImageUrl" + Integer.toString(i)).getValue().toString();
+                            }
+                        }
+                        String nameAge;
+                        nameAge = dataSnapshot.child("name").getValue().toString();
+                        if (dataSnapshot.child("age").getValue() != null) {
+                            nameAge += ", ";
+                            if (dataSnapshot.child("age").getValue().toString().equals("0")) {
+                                nameAge += " < 1";
+                            } else {
+                                nameAge += dataSnapshot.child("age").getValue().toString();
+                            }
+                        }
+                        cards item = new cards(dataSnapshot.getKey(), nameAge, profileImageUrl, 0);
+                        if (dataSnapshot.child("color").getValue() != null) {
+                            item.setColor(dataSnapshot.child("color").getValue().toString());
+                        }
+                        if (dataSnapshot.child("sex").getValue() != null) {
+                            item.setPet(dataSnapshot.child("sex").getValue().toString());
+                        }
+                        if (dataSnapshot.child("city").getValue() != null) {
+                            item.setCity(dataSnapshot.child("city").getValue().toString());
+                        }
+                        if (dataSnapshot.child("description").getValue() != null) {
+                            item.setDescription(dataSnapshot.child("description").getValue().toString());
+                        }
                         rowItems.add(item);
                         arrayAdapter.notifyDataSetChanged();
                     }
@@ -243,11 +285,27 @@ public class MainActivity extends AppCompatActivity {
                 if (dataSnapshot.child("sex").getValue() != null && dataSnapshot.child("sex").getValue().equals("Human")) {
                     if (dataSnapshot.exists() && !dataSnapshot.child("connections").child("nope").hasChild(currentUId) && !dataSnapshot.child("connections").child("yeps").hasChild(currentUId)
                             && Arrays.asList(yeps).contains(dataSnapshot.getKey())) {
-                        String profileImageUrl = "default";
+                        String[] profileImageUrl = new String[]{};
                         if (!dataSnapshot.child("profileImageUrl").getValue().equals("default")) {
-                            profileImageUrl = dataSnapshot.child("profileImageUrl").getValue().toString();
+                            profileImageUrl = Arrays.copyOf(profileImageUrl, profileImageUrl.length + 1);
+                            profileImageUrl[profileImageUrl.length-1] = dataSnapshot.child("profileImageUrl").getValue().toString();
+                        } else {
+                            profileImageUrl = Arrays.copyOf(profileImageUrl, profileImageUrl.length + 1);
+                            profileImageUrl[profileImageUrl.length-1] = "default";
                         }
-                        cards item = new cards(dataSnapshot.getKey(), dataSnapshot.child("name").getValue().toString(), profileImageUrl);
+                        for (int i = 0; i < 4; i++) {
+                            if (dataSnapshot.child("profileImageUrl" + Integer.toString(i)).getValue() != null &&
+                                    !dataSnapshot.child("profileImageUrl" + Integer.toString(i)).getValue().equals("default")) {
+                                profileImageUrl = Arrays.copyOf(profileImageUrl, profileImageUrl.length + 1);
+                                profileImageUrl[profileImageUrl.length-1] = dataSnapshot.child("profileImageUrl" + Integer.toString(i)).getValue().toString();
+                            }
+                        }
+                        String nameAge;
+                        nameAge = dataSnapshot.child("name").getValue().toString();
+                        cards item = new cards(dataSnapshot.getKey(), nameAge, profileImageUrl, 0);
+                        if (dataSnapshot.child("description").getValue() != null) {
+                            item.setDescription(dataSnapshot.child("description").getValue().toString());
+                        }
                         rowItems.add(item);
                         arrayAdapter.notifyDataSetChanged();
                     }

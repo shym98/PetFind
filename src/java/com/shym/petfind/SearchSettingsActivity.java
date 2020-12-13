@@ -172,12 +172,12 @@ public class SearchSettingsActivity extends AppCompatActivity implements SeekBar
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
+        age.setText(String.valueOf(seekBar.getProgress()));
     }
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-
+        age.setText(String.valueOf(seekBar.getProgress()));
     }
 
     @Override

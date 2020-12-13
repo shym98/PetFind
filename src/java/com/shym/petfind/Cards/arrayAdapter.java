@@ -1,6 +1,7 @@
 package com.shym.petfind.Cards;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,29 @@ public class arrayAdapter extends ArrayAdapter<cards>{
                 break;
         }
 
+        if (card_item.getPet() != null && card_item.isClicked()) {
+            convertView.findViewById(R.id.pet_layout).setVisibility(View.VISIBLE);
+            TextView pet = (TextView) convertView.findViewById(R.id.textView12);
+            pet.setText(card_item.getPet());
+        }
+
+        if (card_item.getColor() != null && card_item.isClicked()) {
+            convertView.findViewById(R.id.color_layout).setVisibility(View.VISIBLE);
+            TextView color = (TextView) convertView.findViewById(R.id.textView14);
+            color.setText(card_item.getColor());
+        }
+
+        if (card_item.getCity() != null && card_item.isClicked()) {
+            convertView.findViewById(R.id.city_layout).setVisibility(View.VISIBLE);
+            TextView city = (TextView) convertView.findViewById(R.id.textView20);
+            city.setText(card_item.getCity());
+        }
+
+        if (card_item.getDescription() != null && card_item.isClicked()) {
+            convertView.findViewById(R.id.description_layout).setVisibility(View.VISIBLE);
+            TextView desc = (TextView) convertView.findViewById(R.id.textView21);
+            desc.setText(card_item.getDescription());
+        }
 
         return convertView;
 
