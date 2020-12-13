@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             public void removeFirstObjectInAdapter() {
                 Log.d("LIST", "removed object!");
                 rowItems.remove(0);
+                //flingContainer.removeAllViewsInLayout();
                 arrayAdapter.notifyDataSetChanged();
             }
 
@@ -202,11 +203,11 @@ public class MainActivity extends AppCompatActivity {
             if (!dataSnapshot.child("city").getValue().toString().equals(city)) return false;
         }
 
-        if (dataSnapshot.child("sex").getValue() != null && types[0].length() > 0) {
+        if (dataSnapshot.child("sex").getValue() != null && types != null && types[0].length() > 0) {
             if (!Arrays.asList(types).contains(dataSnapshot.child("sex").getValue().toString())) return false;
         }
 
-        if (dataSnapshot.child("color").getValue() != null && colors[0].length() > 0) {
+        if (dataSnapshot.child("color").getValue() != null && colors != null && colors[0].length() > 0) {
             if (!Arrays.asList(colors).contains(dataSnapshot.child("color").getValue().toString())) return false;
         }
 

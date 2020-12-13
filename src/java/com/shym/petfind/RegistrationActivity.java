@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -79,7 +80,12 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 final RadioButton radioButton = (RadioButton) findViewById(selectId);
 
-                if(radioButton.getText() == null){
+                if(radioButton == null){
+                    Toast.makeText(RegistrationActivity.this, "Choose your type", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (!SetValidation()){
                     return;
                 }
 
@@ -121,5 +127,44 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         mAuth.removeAuthStateListener(firebaseAuthStateListener);
+    }
+
+    public boolean SetValidation() {
+        boolean isNameValid, isEmailValid, isPasswordValid;
+        // Check for a valid name.
+        if (mName.getText().toString().isEmpty()) {
+            mName.setError(getResources().getString(R.string.name_error));
+            isNameValid = false;
+        } else  {
+            isNameValid = true;
+        }
+
+        // Check for a valid email address.
+        if (mEmail.getText().toString().isEmpty()) {
+            mEmail.setError(getResources().getString(R.string.email_error));
+            isEmailValid = false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(mEmail.getText().toString()).matches()) {
+            mEmail.setError(getResources().getString(R.string.error_invalid_email));
+            isEmailValid = false;
+        } else  {
+            isEmailValid = true;
+        }
+
+        // Check for a valid password.
+        if (mPassword.getText().toString().isEmpty()) {
+            mPassword.setError(getResources().getString(R.string.password_error));
+            isPasswordValid = false;
+        } else if (mPassword.getText().length() < 8) {
+            mPassword.setError(getResources().getString(R.string.error_invalid_password));
+            isPasswordValid = false;
+        } else  {
+            isPasswordValid = true;
+        }
+
+        if (isNameValid && isEmailValid && isPasswordValid) {
+            return true;
+        }
+
+        return false;
     }
 }

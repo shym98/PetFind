@@ -44,7 +44,8 @@
                 android:background="@null"
                 android:focusable="auto"
                 android:hint="Phone"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/description"

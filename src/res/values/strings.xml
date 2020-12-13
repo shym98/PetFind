@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Pet Find</string>
+    <string name="password_error">Invalid password</string>
+    <string name="error_invalid_password">Invalid password</string>
+    <string name="error_invalid_email">Invalid email</string>
+    <string name="email_error">Invalid email</string>
+    <string name="name_error">Invalid name</string>
 </resources>

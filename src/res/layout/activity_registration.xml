@@ -19,6 +19,7 @@
         <RadioButton
             android:layout_width="135dp"
             android:layout_height="wrap_content"
+            android:checked="false"
             android:text="Human" />
 
         <RadioButton
@@ -35,12 +36,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="email"
+        android:inputType="textEmailAddress"
         android:id="@+id/email"/>
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textPassword"
         android:hint="password"
         tools:visibility="visible" />
 
