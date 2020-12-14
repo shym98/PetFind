@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.shym.petfind.SettingsActivity"
     android:orientation="vertical"
+    android:background="@drawable/test"
     android:padding="20sp">
 
     <ScrollView
@@ -34,7 +35,8 @@
                 android:layout_marginBottom="20sp"
                 android:background="@null"
                 android:focusable="auto"
-                android:hint="Name" />
+                android:hint="Name"
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/phone"
@@ -55,13 +57,15 @@
                 android:focusable="auto"
                 android:gravity="start|top"
                 android:hint="Description"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="City"
+                android:textSize="18sp"
                 android:visibility="gone" />
 
             <Spinner
@@ -75,6 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Color"
+                android:textSize="18sp"
                 android:visibility="gone" />
 
             <Spinner
@@ -88,6 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Age"
+                android:textSize="18sp"
                 android:visibility="gone" />
 
             <LinearLayout
@@ -174,17 +180,24 @@
                     android:src="@mipmap/ic_launcher" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:orientation="vertical"></LinearLayout>
+
             <Button
                 android:id="@+id/confirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/btn_rounded"
                 android:text="confirm" />
 
             <Button
                 android:id="@+id/back"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="back" />
+                android:text="back"
+                tools:visibility="gone" />
         </LinearLayout>
     </ScrollView>
 

@@ -52,6 +52,16 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
+
+                if (email.length() == 0) {
+                    mEmail.setError(getResources().getString(R.string.error_invalid_email));
+                }
+
+                if (password.length() == 0) {
+                    mPassword.setError(getResources().getString(R.string.error_invalid_password));
+                }
+
+                if (password.length() >0 && email.length() > 0)
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

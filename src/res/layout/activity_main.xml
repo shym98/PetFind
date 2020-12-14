@@ -11,36 +11,62 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <Button
+
+        <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SignOut"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/custom_button"
+            android:layout_width="31dp"
+            android:layout_height="39dp"
+            android:background="@drawable/logout"
             android:onClick="logoutUser" />
-        <Button
-            android:layout_weight="1"
+
+        <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Matches"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="31dp"
+            android:layout_height="39dp"
+            android:background="@drawable/message"
             android:onClick="goToMatches" />
-        <Button
-            android:layout_weight="1"
+
+        <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Settings"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="31dp"
+            android:layout_height="39dp"
+            android:background="@drawable/sett"
             android:onClick="goToSettings" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/search_button"
+            android:layout_width="31dp"
+            android:layout_height="39dp"
+            android:background="@drawable/find"
+            android:onClick="goToSearchSettings" />
+
+        <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="goToSearchSettings"
-            android:text="Search" />
+            android:layout_weight="1" />
     </LinearLayout>
 
     <com.lorentzos.flingswipe.SwipeFlingAdapterView
         android:id="@+id/frame"
-        android:background="@android:color/white"
+        android:background="@drawable/test"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:rotation_degrees="15.5"

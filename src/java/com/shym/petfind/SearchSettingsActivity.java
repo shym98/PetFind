@@ -52,7 +52,7 @@ public class SearchSettingsActivity extends AppCompatActivity implements SeekBar
     private SeekBar ageSlider;
 
     private Spinner spinner;
-    String[] cities = {"Kyiv", "Lviv", "Kharkiv", "Dnipro", "Cherkasy"};
+    String[] cities = {"Any","Kyiv", "Lviv", "Kharkiv", "Dnipro", "Cherkasy"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,8 +116,8 @@ public class SearchSettingsActivity extends AppCompatActivity implements SeekBar
 
         String type = "";
         String color = "";
-        String age = "0";
-        String city = "";
+        String age = "20";
+        String city = "Any";
 
         Map userInfo = new HashMap();
         userInfo.put("type", type);

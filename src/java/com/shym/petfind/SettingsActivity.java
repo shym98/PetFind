@@ -92,6 +92,8 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
         ArrayAdapter<String> adapterCities = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cities);
         adapterCities.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+        mBack.setVisibility(View.GONE);
+
         spinnerCities = (Spinner) findViewById(R.id.spinner3);
         spinnerCities.setAdapter(adapterCities);
         spinnerCities.setPrompt("City");
@@ -216,7 +218,7 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
                         profileImageUrl = map.get("profileImageUrl").toString();
                         switch(profileImageUrl){
                             case "default":
-                                Glide.with(getApplication()).load(R.mipmap.ic_launcher).into(mProfileImage);
+                                //Glide.with(getApplication()).load(R.mipmap.ic_launcher).into(mProfileImage);
                                 break;
                             default:
                                 Glide.with(getApplication()).load(profileImageUrl).into(mProfileImage);
@@ -323,6 +325,7 @@ public class SettingsActivity extends AppCompatActivity implements SeekBar.OnSee
                         return;
                     }
                 });
+
             }
         }
     }

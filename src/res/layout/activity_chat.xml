@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.simcoder.tinder.Chat.ChatActivity">
+    android:background="@drawable/test"
+    tools:context="com.shym.petfind.Chat.ChatActivity">
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,6 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Send"
+            android:background="@drawable/btn_rounded"
             android:id="@+id/send"/>
     </LinearLayout>
 

@@ -8,6 +8,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/test"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
         android:orientation="vertical">
 
         <TextView
@@ -15,6 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pet"
+            android:textSize="18sp"
             tools:ignore="MissingConstraints" />
 
         <LinearLayout
@@ -83,6 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Age"
+            android:textSize="18sp"
             tools:ignore="MissingConstraints" />
 
         <LinearLayout
@@ -110,6 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Color"
+            android:textSize="18sp"
             tools:ignore="MissingConstraints" />
 
         <LinearLayout
@@ -217,7 +223,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="City"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints"
+            android:textSize="18sp" />
 
         <Spinner
             android:id="@+id/spinner2"
@@ -228,21 +235,39 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="20dp"
             android:orientation="horizontal">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/save_settings"
-                android:layout_width="180dp"
+                android:layout_width="140dp"
                 android:layout_height="48dp"
                 android:text="Save settings"
+                android:background="@drawable/btn_rounded"
                 tools:ignore="MissingConstraints" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/reset"
-                android:layout_width="137dp"
+                android:layout_width="140dp"
                 android:layout_height="48dp"
                 android:text="Reset"
+                android:background="@drawable/btn_rounded"
                 tools:ignore="MissingConstraints" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
         </LinearLayout>
 
     </LinearLayout>

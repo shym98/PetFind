@@ -53,14 +53,15 @@
                     android:id="@+id/textView11"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Pet" />
+                    android:text="&#128021;" />
 
                 <TextView
                     android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="0dp"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -74,14 +75,15 @@
                     android:id="@+id/textView13"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Color" />
+                    android:text="&#9898;" />
 
                 <TextView
                     android:id="@+id/textView14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="0dp"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -96,14 +98,15 @@
                     android:id="@+id/textView19"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="City" />
+                    android:text="&#127961;" />
 
                 <TextView
                     android:id="@+id/textView20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="0dp"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 

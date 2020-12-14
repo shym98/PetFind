@@ -4,17 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.simcoder.tinder.ChooseLoginRegistrationActivity"
+    tools:context="com.shym.petfind.ChooseLoginRegistrationActivity"
+    android:background="@drawable/test"
     android:orientation="vertical">
-    <Button
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="131dp"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="login"
-        android:id="@+id/login"/>
-    <Button
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="115dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="PetFind"
+            android:textColor="#FDFFFD"
+            android:textSize="80sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/aguafina_script" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="229dp"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="register"
-        android:id="@+id/register"/>
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="75dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="253dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_rounded"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="login" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:orientation="vertical"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="75dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="253dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_rounded"
+            android:text="register" />
+    </LinearLayout>
 
 </LinearLayout>
